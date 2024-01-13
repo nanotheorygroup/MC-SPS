@@ -1,8 +1,7 @@
 
 # Monte Carlo Site Permutation Search
 
-Toolkit for optimizing atomic decoration on fixed atomic geometries. MEGNet or M3GNet provide rapid estimation of total energy, which can accurately rank the energetic favorability of various configurations.
-Simulated annealing and basin hopping techniques assist in discovery of locally and globally minimal configurations.
+Toolkit for optimizing atomic decoration on fixed geometries. MEGNet or M3GNet provide rapid estimation of total energy, which can accurately rank the energetic favorability of various configurations. Simulated annealing and basin hopping techniques assist in discovery of locally and globally minimal configurations.  
 Functionality and results of this software is documented at https://doi.org/10.21203/rs.3.rs-3740642/v1. The work is currently under review with NPJ Computational Materials.  
   
 ## Requirements:
@@ -20,7 +19,7 @@ Functionality and results of this software is documented at https://doi.org/10.2
   * The following SPS routines can be imported from the mcsps module, sps\_fixed, sps\_vacancy, sps\_cluster. Structure lattice, atomic basis, and temperature trajectory are supplied directly to the SPS routines.
   * Examples documenting the package usage are located in the examples directory.
   * The main\*.py scripts can be run in the background, and output can be monitored through the trajectory output file and structure output file. Trajectory output is updated upon each accepted configuration. Structure output is updated each time a structure is identified with a lower total energy.
-  * Advanced features for documenting site occupation factors and saving multiple favorable structures are coming soon. 
+  * Visualization tools and advanced features for documenting site occupation factors and saving multiple favorable structures are coming soon. 
 
 
 ## Examples:
