@@ -6,7 +6,6 @@ def read_swap_trajectory ( fname ):
   with open(fname, 'r') as f:
     for l in f.readlines():
       i,n,t,e = (float(v) for v in l.split())
-      print(i)
       inds.append(i)
       nswap.append(n)
       temps.append(t)
