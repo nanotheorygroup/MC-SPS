@@ -3,7 +3,7 @@ from MCSPS.mcsps import sps_fixed
 import numpy as np
 
 # Seed the trajectory for reproducibility
-np.random.seed(1234)
+np.random.seed(4321)
 
 # Create the GaAs unit lattice and atomic basis
 fcc = 0.5 * np.array([[-1,0,1],[0,1,1],[-1,1,0]], dtype=float)
@@ -22,8 +22,8 @@ np.random.shuffle(species)
 # Define temperature trajectory and number of steps per temperature
 #  This trajectory performs 2000 swaps at absolute zero.
 temperatures = [0]
-num_swaps_per_temperature = [2000]
+num_swaps_per_temperature = [1200]
 
 # Start SPS
-sps_fixed(lattice, species, positions, temperatures, num_swaps_per_temperature)
+sps_fixed(lattice, species, positions, temperatures, num_swaps_per_temperature, nswap_inc=200)
 

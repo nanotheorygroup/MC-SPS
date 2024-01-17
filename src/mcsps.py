@@ -61,6 +61,7 @@ def sps_fixed ( lattice,
       stop (float): Terminate the trial if the predicted structure energy is at or below the provided stop value.
   '''
   from .utilities import boundary_verification
+  from .file_io import write_swap_accept
   from os.path import isfile
   from ase.io import write
   from ase import Atoms
@@ -73,7 +74,7 @@ def sps_fixed ( lattice,
   nat = len(species)
   lattice = np.array(lattice)
   positions = np.array(positions)
-  write_atoms = Atoms(species, positions=positions, cell=lattice, pbc=[1,1,1])
+  write_atoms = Atoms(species, positions=positions@lattice, cell=lattice, pbc=[1,1,1])
 
   # Verify that the input arrays have appropriate dimensions
   boundary_verification(lattice, species, positions, nfixed)
@@ -95,8 +96,7 @@ def sps_fixed ( lattice,
   # Initialize the swaps output file. Exit if the file exists already.
   if isfile(swap_fname):
     raise FileExistsError(f'File {swap_fname} already exists. Will not overwrite.')
-  with open(swap_fname, 'w') as f:
-    f.write('{} {} {} {}\n'.format(itr, itr-last_swap_i, temperatures[0], ene))
+  write_swap_accept(swap_fname, 'w', itr, itr-last_swap_i, temperatures[0], ene)
 
   for i,temp in enumerate(temperatures):
     for _ in range(temp_swaps[i]):
@@ -108,9 +108,10 @@ def sps_fixed ( lattice,
 
       dE = t_ene - ene
       boltz = False if temp==0 else np.exp(-dE/(kB*temp)) > np.random.rand()
+
+      # Accept condition
       if dE < 0 or boltz:
-        with open(swap_fname, 'a') as f:
-          f.write('{} {} {} {}\n'.format(itr, itr-last_swap_i, temp, t_ene))
+        write_swap_accept(swap_fname, 'a', itr, itr-last_swap_i, temp, t_ene)
         ene = t_ene
         nswap = sswap
         last_swap_i = itr
@@ -119,7 +120,6 @@ def sps_fixed ( lattice,
           emin = ene
           write_atoms.set_chemical_symbols(species)
           write(emin_fname, write_atoms)
-          # Write XYZ structure file for minimum energy structure
 
       else:
         if (itr-last_swap_i) % nswap_inc == 0:

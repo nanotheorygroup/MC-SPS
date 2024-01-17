@@ -1,0 +1,10 @@
+
+The superstructurally ordered clathrate, Rb8 Ga27 Sb19, forms in a bcc unit structure with 216 atoms.
+Here, a uniform silicon clathrate framework with rubidium inclusions is taken as the base structure. 
+Framework atoms are replaced with gallium and antimony, with the appropriate proportions, and SPS is preformed to determine the ground state decoration.
+
+To run:
+  python main_Rb8Ga27Sb19.py
+
+To plot:
+  python plot_Rb8Ga27Sb19.py

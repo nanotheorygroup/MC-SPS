@@ -1,0 +1,9 @@
+
+Binary GaAs in the fcc zincblende structure. The 2 atom unit is extended into a 3x3x3 supercell.
+The SPS procedure 
+
+To run:
+  python main_Rb8Ga27Sb19.py
+
+To plot:
+  python plot_Rb8Ga27Sb19.py

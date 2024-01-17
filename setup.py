@@ -16,6 +16,7 @@ setup(name='MCSPS',
       url='https://github.com/nanotheorygroup/MC-SPS',
       packages=['MCSPS'],
       package_dir={'MCSPS':'src'},
-      install_requires=['ase', 'numpy', 'megnet'],
+      install_requires=['ase', 'numpy'],
+      extra_requires=['matplotlib', 'megnet'],
       python_requires='>=3.7'
 )
