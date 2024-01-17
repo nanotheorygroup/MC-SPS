@@ -10,7 +10,7 @@ atoms = read('Rb32Si184.xyz')
 
 lattice = atoms.cell[:]
 species = atoms.get_chemical_symbols()
-positions = atoms.positions
+positions = atoms.get_scaled_positions()
 
 # Define the number of fixed atoms, at the front of the species list.
 #  Here, the Rubidium atoms will not undergo exchange
