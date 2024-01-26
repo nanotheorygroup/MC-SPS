@@ -1,9 +1,15 @@
 
-Binary GaAs in the fcc zincblende structure. The 2 atom unit is extended into a 3x3x3 supercell.
-The SPS procedure 
+Binary GaAs in the fcc zincblende structure. SPS is performed without and with simulated annealing in two examples.
+The 2 atom unit is extended into a 3x3x3 supercell for the absolute zero run and into a 5x5x5 supercell for the annealed trial.
 
 To run:
-  python main_Rb8Ga27Sb19.py
+  python main_absolute_zero.py
+  python main_annealing.py
 
-To plot:
-  python plot_Rb8Ga27Sb19.py
+To plot with manually:
+  python plot_swaps_absolute_zero.py
+  python plot_Swaps_annealed.py
+
+To plot both trials with built in scripts:
+  python plot_example_GaAs.py
+
