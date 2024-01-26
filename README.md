@@ -24,5 +24,6 @@ Functionality and results of this software is documented at https://doi.org/10.2
 
 ## Examples:
   * GaAs - 3x3x3 Gallium Arsenide supercell. Demonstrates the most basic features of the SPS package.
-  * Vacancy ordered and superstructurally ordered SPS optimization examples coming soon. 
+  * Rb8Ga27Sb19 - Superstructural ordering predicted on the elemental type-I clathrate geometry
+  * Vacancy ordered SPS optimization examples coming soon. 
 
