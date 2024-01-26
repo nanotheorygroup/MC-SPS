@@ -14,7 +14,6 @@ def plot_swap_trajectory ( file_pattern, temperature=True, min_energy=None, show
   ax.set_xlabel('Iteration')
   ax.set_ylabel('Energy (eV/atom)')
 
-
   colors = ['black', 'gray']
   col_line = None
   if temperature:
@@ -59,6 +58,9 @@ def plot_swap_trajectory ( file_pattern, temperature=True, min_energy=None, show
       all_temps.append(temps)
 
   color_norm = plt.Normalize(0, max_temp)
+
+  if min_energy is not None:
+    ax.hlines(min_energy, 0, max_ind, linestyle='--', color='black')
 
   ordered_inds = list(range(len(all_inds)))
   if min_energy is not None:
