@@ -5,11 +5,11 @@ def read_swap_trajectory ( fname ):
   inds,nswap,temps,enes = [],[],[],[]
   with open(fname, 'r') as f:
     for l in f.readlines():
-      i,n,t,e = (float(v) for v in l.split())
-      inds.append(i)
-      nswap.append(n)
-      temps.append(t)
-      enes.append(e)
+      i,n,t,e = l.split()
+      inds.append(int(i))
+      nswap.append(int(n))
+      temps.append(float(t))
+      enes.append(float(e))
 
   return inds, nswap, temps, enes
 

@@ -14,7 +14,7 @@ unit_positions = np.array([[0,0,0], [0.25,0.25,0.25]])
 
 # Create a 3x3x3 supercell
 supercell_dimensions = [4, 4, 4]
-lattice, species, positions = create_supercell(unit_lattice, unit_species, unit_positions, supercell_dimensions)
+lattice, positions, species = create_supercell(unit_lattice, unit_positions, unit_species, supercell_dimensions)
 
 # Randomize the list of species
 np.random.shuffle(species)

@@ -1,46 +1,41 @@
 
 
 
-def create_supercell ( lattice, species, positions, nsc=(2,2,2) ):
+def create_supercell ( lattice, positions, species=None, nsc=(2,2,2) ):
   '''
-    Create a supercell lattice and set of atomic positions from a unit arrangement
+    Create a supercell lattice and set of atomic positions from a unit arrangement.
+    If species are provided, they will be duplicated accordingly.
+
+    Arguments:
+      lattice (ndarray): 3x3 matrix with the lattice vectors
+      positions (ndarray): Nx3 matrix containing the unit positions as 3-vectors
+      species (list): List of species to duplicate. If None, only lattice and positions are replicated
+      nsc (tuple, list, or ndarray): Number of cells to replicate in each direction (nx,ny,nz)
+
+    Returns:
+      (ndarray,ndarray): supercell lattice and positions, if species is not specified
+      (ndarray,ndarray,list): supercell lattice, positions, and replicated species, if species is specified
   '''
   import numpy as np
 
-  supercell_species = []
   supercell_positions = []
 
   for i in range(nsc[0]):
     for j in range(nsc[1]):
       for k in range(nsc[2]):
         origin = np.array([i,j,k])
-        for spec,pos in zip(species, positions):
-          supercell_species.append(spec)
-          supercell_positions.append(pos + origin)
+        supercell_positions += [pos+origin for pos in positions]
 
   supercell_lattice = lattice.copy()
   supercell_positions = np.array(supercell_positions)
   for i in range(3):
     supercell_lattice[i] *= nsc[i]
     supercell_positions[:,i] /= nsc[i]
-     
-  return supercell_lattice,supercell_species,supercell_positions
 
+  if species is not None:
+    supercell_species = np.prod(nsc) * species
+    return supercell_lattice,supercell_positions,supercell_species
 
-
-def boundary_verification ( lattice, species, positions, nfixed, nvacant=0 ):
-
-  if len(lattice.shape) != 2 or not (lattice.shape[0] == 3 and lattice.shape[1] == 3):
-    raise ValueError('Lattice shape must be (3,3)')
-
-  if len(lattice.shape) != 2 or positions.shape[0] != len(species) or positions.shape[1] != 3:
-    raise ValueError('Positions shape must be (N,3), where N is the number of provided Species')
-
-  if nfixed > positions.shape[0]-2:
-    raise ValueError(f'Cannot fix {nfixed} of {nat} sites. Decrease {nfixed} or provide more sites.')
-
-  if len(set(species)) <= 1:
-    raise ValueError('Species list must contain more than one type of species')
-
-# Check nfixed + vacancies == nspecies
+  else:
+    return supercell_lattice,supercell_positions
 
