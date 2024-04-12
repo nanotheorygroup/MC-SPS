@@ -1,8 +1,8 @@
 
 # Monte Carlo Site Permutation Search
 
-Toolkit for optimizing atomic decoration on fixed geometries. MEGNet or M3GNet provide rapid estimation of total energy, which can accurately rank the energetic favorability of various configurations. Simulated annealing and basin hopping techniques assist in discovery of locally and globally minimal configurations.  
-Functionality and results of this software is documented at https://doi.org/10.21203/rs.3.rs-3740642/v1. The work is currently under review with NPJ Computational Materials.  
+Toolkit for optimizing atomic decoration on fixed geometries. MEGNet and M3GNet provide rapid estimation of total energy, which can accurately rank the energetic favorability of various configurations. Simulated annealing and basin hopping techniques assist in discovery of locally and globally minimal configurations.  
+Functionality and results of this software is documented at https://doi.org/10.21203/rs.3.rs-3740642/v1. 
   
 ## Requirements:
   * ASE
