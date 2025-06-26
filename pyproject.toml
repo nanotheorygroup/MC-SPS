@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools >= 77.0.3"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "MC-SPS"
+version = "0.1.1"
+authors = [
+  { name="Frank T. Cerasoli", email="ftcerasoli@ucdavis.edu" },
+]
+description = "A Python tool for performing site permutation search on fixed atomic geometries."
+readme = "README.md"
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+license = "CC-BY-4.0"
+license-files = ["LICENSE"]
+
+[project.urls]
+Homepage = "https://github.com/nanotheorygroup/MC-SPS"
+Issues = "https://github.com/nanotheorygroup/MC-SPS/issues"
